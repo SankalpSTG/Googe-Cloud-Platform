@@ -83,15 +83,28 @@ In the sample-apps folder, you will find a basic node js application "node-examp
 
 First you need to initialize your gcloud sdk using following command
 
-`gcloud init`
+```
+gcloud init
+```
 
-Once initialized, you can simply deploy the application using following command
+Create an "app.yaml" file which will contain the basic configuration for your app. Add the following lines in the file
 
-`gcloud app deploy`
+```
+runtime: nodejs14
+service: default
+```
+
+Now you can simply deploy the application using following command
+
+```
+gcloud app deploy
+```
 
 Once deployment is successful, you can visit your app through following command
 
-`gcloud app browse`
+```
+gcloud app browse
+```
 ## Things That Can Go Wrong
 
 In case if you have error regarding dependencies installation on cloud, try deleting package-lock.json and /node-modules folder from the directory(if exists)
@@ -100,3 +113,4 @@ In case if deployment is successful but when you visit the domain, it does not r
 
 Make sure you never use "nodemon app.js" in package.json start command. This might imact your google cloud billing
 
+The first instance should be deployed to the default service. However the next instances can be deployed to custom services by chaning the service name in "app.yaml" file.
